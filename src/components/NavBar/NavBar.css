@@ -1,0 +1,45 @@
+span {
+  margin: 0; 
+}
+
+.Navbar {
+  width: 100vw;
+  height: 8vh;
+  background-color:#d1d1d1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-area {
+  display: flex;
+  margin-right: 20px;
+}
+
+.status-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-item-title {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.status-item-on {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.status-item-off {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
