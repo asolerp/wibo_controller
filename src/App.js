@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Switch from "react-switch";
-import axios from 'axios'
+import React from 'react'
+// import Switch from "react-switch";
+
 import './App.css';
 
 import SocketConnection from './util/socket'
 
 // Components
 import NavBar from './components/NavBar/NavBar'
+import JoyWrapper from './components/Joystick/Joystick'
 
-const config = {
-  headers: {
-    'Access-Control-Allow-Origin': true,
-    'Content-Type': 'application/json'
-  }
-}
 
 // const client  = mqtt.connect('mqtt://192.168.1.63', {clientId:"mqttjs02"})
 
@@ -21,8 +16,8 @@ function App() {
   const serverUrl='http://localhost:3000', topic='evento';
   const { data, isConnected } = SocketConnection(serverUrl, topic);
 
-  const [checkedRed, setCheckedRed] = useState(false)
-  const [checkedBlue, setCheckedBlue] = useState(false)
+  // const [checkedRed, setCheckedRed] = useState(false)
+  // const [checkedBlue, setCheckedBlue] = useState(false)
 
 
   // useEffect(() => {
@@ -37,30 +32,31 @@ function App() {
   //   })
   // },[])
 
-  const handleChangeRed = async () => {
-    try {
-      setCheckedRed(!checkedRed)
-      axios.post("http://localhost:3000/send-mqtt", { message: checkedRed ? '0' : '1'}, config)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const handleChangeRed = async () => {
+  //   try {
+  //     setCheckedRed(!checkedRed)
+  //     axios.post("http://localhost:3000/send-mqtt", { message: checkedRed ? '0' : '1'}, config)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
-  const handleChangeBlue = async () => {
-    try {
-      setCheckedBlue(!checkedBlue)
-      axios.post("http://localhost:3000/send-mqtt", { message: checkedBlue ? '4' : '5'}, config)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // const handleChangeBlue = async () => {
+  //   try {
+  //     setCheckedBlue(!checkedBlue)
+  //     axios.post("http://localhost:3000/send-mqtt", { message: checkedBlue ? '4' : '5'}, config)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   return (
     <>
     <NavBar socketConnection={isConnected}/>
     <div className="App">
       <div className="switch-container">
-        <label className="Label">
+        <JoyWrapper />
+        {/* <label className="Label">
           <span>LED ROJO</span>
             <Switch 
             onChange={handleChangeRed} 
@@ -83,7 +79,7 @@ function App() {
             height={60}
             width={120} 
             />
-          </label>
+          </label> */}
       </div>
       <div>
         {
